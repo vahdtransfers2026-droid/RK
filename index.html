@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Data Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2, h3 {
+            text-align: center;
+            margin: 5px;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-top: 20px;
+            font-weight: bold;
+            background: #eef2f7;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin: 12px 0;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            button {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Employee Data Collection</h2>
+<h3>Internal Use Form</h3>
+
+<p class="note">
+This form is intended for internal data collection purposes only.  
+No passwords or sensitive credentials are collected.
+</p>
+
+<form method="POST" action="YOUR_GOOGLE_SCRIPT_URL">
+
+<div class="section">Employee Details</div>
+
+<div class="form-group">
+<label>Emp ID</label>
+<input type="text" name="emp_id" required>
+</div>
+
+<div class="form-group">
+<label>Employee Name</label>
+<input type="text" name="employee_name" required>
+</div>
+
+<div class="form-group">
+<label>Gender</label>
+<select name="gender" required>
+<option value="">Select</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Date of Birth</label>
+<input type="date" name="dob" required>
+</div>
+
+<div class="form-group">
+<label>Designation</label>
+<select name="designation">
+<option value="">Select</option>
+<option>AD(A)</option>
+<option>AD(B)</option>
+<option>AD(S)</option>
+<option>DD(A)</option>
+<option>DD(B)</option>
+<option>Driver(LV)</option>
+<option>GOM</option>
+<option>JD(A)</option>
+<option>JD(B)</option>
+<option>Jr.Asst</option>
+<option>Jr.Asst-Cum-Typist</option>
+<option>Jr.Steno</option>
+<option>JVO</option>
+<option>Lab Attender</option>
+<option>Lab Tech</option>
+<option>LSA</option>
+<option>Photo Artist</option>
+<option>Radiographer</option>
+<option>Record Asst.</option>
+<option>S.I</option>
+<option>Sr.Asst.</option>
+<option>Sr.Steno</option>
+<option>Statistical Computer</option>
+<option>Superintendent</option>
+<option>Typist</option>
+<option>Typist-cum-Clerk</option>
+<option>VA</option>
+<option>VAS(A)</option>
+<option>VAS(B)</option>
+<option>VDO</option>
+<option>VLO</option>
+<option>Watchmen</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Institution Type</label>
+<select name="inst_type">
+<option value="">Select</option>
+<option>ADDL</option>
+<option>AVH</option>
+<option>Directorate</option>
+<option>DVAHO</option>
+<option>DVH</option>
+<option>ISDP</option>
+<option>MC</option>
+<option>PVC</option>
+<option>QAL</option>
+<option>RAHTC</option>
+<option>SC(AH)</option>
+<option>SDBP</option>
+<option>SSVH</option>
+<option>SVHRDI</option>
+<option>TGSGCFL</option>
+<option>TGVBRI</option>
+<option>TGVCI</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Institution Place</label>
+<input type="text" name="inst_place" placeholder="Enter Place">
+</div>
+
+<div class="form-group">
+<label>Institution Mandal</label>
+<input type="text" name="inst_mandal">
+</div>
+
+<div class="form-group">
+<label>Institution District</label>
+<select name="inst_dist" required>
+<option value="">Select District</option>
+<option>Adilabad</option>
+<option>Bhadradri Kothagudem</option>
+<option>Hanumakonda</option>
+<option>Hyderabad</option>
+<option>Jagitial</option>
+<option>Jangaon</option>
+<option>Jayashankar Bhupalpally</option>
+<option>Jogulamba Gadwal</option>
+<option>Kamareddy</option>
+<option>Karimnagar</option>
+<option>Khammam</option>
+<option>Komurambheem Asifabad</option>
+<option>Mahabubabad</option>
+<option>Mahabubnagar</option>
+<option>Mancherial</option>
+<option>Medak</option>
+<option>Medchal</option>
+<option>Mulugu</option>
+<option>NagarKurnool</option>
+<option>Nalgonda</option>
+<option>Narayanpet</option>
+<option>Nirmal</option>
+<option>Nizamabad</option>
+<option>Peddapalli</option>
+<option>Rajanna Sircilla</option>
+<option>Rangareddy</option>
+<option>Sangareddy</option>
+<option>Siddipet</option>
+<option>Suryapet</option>
+<option>Vikarabad</option>
+<option>Wanaparthy</option>
+<option>Warangal</option>
+<option>Yadadri Bhongir</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Present Station (Date)</label>
+<input type="date" name="present_station" required>
+</div>
+
+<div class="form-group">
+<label>Mobile Number</label>
+<input type="tel" name="mobile"
+pattern="[6-9][0-9]{9}"
+maxlength="10"
+minlength="10"
+placeholder="Enter 10-digit mobile number"
+required>
+</div>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
