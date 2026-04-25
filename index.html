@@ -3,435 +3,114 @@
 <head>
     <title>Employee Data Collection</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --teal: #0d9488;
-            --teal-light: #ccfbf1;
-            --teal-dark: #0f766e;
-            --amber: #f59e0b;
-            --amber-light: #fef3c7;
-            --rose: #f43f5e;
-            --rose-light: #ffe4e6;
-            --violet: #7c3aed;
-            --violet-light: #ede9fe;
-            --sky: #0ea5e9;
-            --sky-light: #e0f2fe;
-            --bg: #f0fdfa;
-            --white: #ffffff;
-            --text: #134e4a;
-            --muted: #6b7280;
-            --border: #99f6e4;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            min-height: 100vh;
-            padding: 30px 16px 50px;
-            background-image:
-                radial-gradient(circle at 10% 20%, rgba(13,148,136,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(124,58,237,0.06) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(245,158,11,0.04) 0%, transparent 70%);
+            font-family: Arial, sans-serif;
+            background: #f0fdfa;
+            padding: 20px;
         }
-
         .container {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 32px;
-            animation: slideDown 0.6s ease both;
-        }
-
-        .header-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--teal), var(--sky));
-            color: white;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 5px 16px;
-            border-radius: 20px;
-            margin-bottom: 14px;
-        }
-
-        .header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
-            color: var(--text);
-            line-height: 1.15;
-            margin-bottom: 8px;
-        }
-
-        .header h1 span {
-            background: linear-gradient(135deg, var(--teal), var(--violet));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .header p {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        /* Card */
-        .card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 32px 36px;
-            box-shadow: 0 4px 30px rgba(13,148,136,0.08), 0 1px 4px rgba(0,0,0,0.04);
-            animation: fadeUp 0.7s ease both;
-            border: 1px solid var(--border);
-        }
-
-        /* Section headers */
-        .section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 28px 0 18px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--teal-light);
-        }
-
-        .section:first-child { margin-top: 0; }
-
-        .section-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            flex-shrink: 0;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.05rem;
-            color: var(--text);
-        }
-
-        /* Two-column grid */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 16px;
-        }
-
-        .full { grid-column: 1 / -1; }
-
-        /* Form groups */
-        .form-group { margin-bottom: 4px; }
-
-        label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            letter-spacing: 0.4px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 11px 14px;
+            max-width: 700px;
+            margin: auto;
+            background: #fff;
+            padding: 25px;
             border-radius: 10px;
-            border: 1.5px solid #e2e8f0;
-            font-size: 14px;
-            font-family: 'DM Sans', sans-serif;
-            color: var(--text);
-            background: #fafffe;
-            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
         }
-
-        input:focus, select:focus {
-            outline: none;
-            background: var(--white);
-        }
-
-        /* Color-coded field groups */
-        .g-teal label { color: var(--teal-dark); }
-        .g-teal input:focus, .g-teal select:focus {
-            border-color: var(--teal);
-            box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
-        }
-
-        .g-amber label { color: #b45309; }
-        .g-amber input:focus, .g-amber select:focus {
-            border-color: var(--amber);
-            box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
-        }
-
-        .g-violet label { color: var(--violet); }
-        .g-violet input:focus, .g-violet select:focus {
-            border-color: var(--violet);
-            box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
-        }
-
-        .g-sky label { color: #0369a1; }
-        .g-sky input:focus, .g-sky select:focus {
-            border-color: var(--sky);
-            box-shadow: 0 0 0 3px rgba(14,165,233,0.12);
-        }
-
-        .g-rose label { color: #be123c; }
-        .g-rose input:focus, .g-rose select:focus {
-            border-color: var(--rose);
-            box-shadow: 0 0 0 3px rgba(244,63,94,0.12);
-        }
-
-        /* Section icon colors */
-        .ic-teal { background: var(--teal-light); }
-        .ic-amber { background: var(--amber-light); }
-        .ic-violet { background: var(--violet-light); }
-        .ic-sky { background: var(--sky-light); }
-
-        /* Submit button */
-        .btn-wrap {
-            margin-top: 28px;
-        }
-
-        button[type="submit"] {
+        input, select, button {
             width: 100%;
-            padding: 15px;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
+            padding: 10px;
+            margin: 8px 0;
+        }
+        button {
+            background: teal;
             color: white;
             border: none;
-            border-radius: 12px;
             cursor: pointer;
-            background: linear-gradient(135deg, var(--teal) 0%, var(--sky) 60%, var(--violet) 100%);
-            background-size: 200% 200%;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.15s, box-shadow 0.2s, background-position 0.4s;
-            box-shadow: 0 4px 20px rgba(13,148,136,0.35);
-            letter-spacing: 0.3px;
-        }
-
-        button[type="submit"]:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(13,148,136,0.4);
-            background-position: right center;
-        }
-
-        button[type="submit"]:active {
-            transform: translateY(0);
-        }
-
-        button[type="submit"]::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(rgba(255,255,255,0.15), transparent);
-            pointer-events: none;
-        }
-
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--border), transparent);
-            margin: 8px 0 20px;
-        }
-
-        /* Animations */
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-18px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(22px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-            .card { padding: 24px 18px; }
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-            .full { grid-column: 1; }
-            .header h1 { font-size: 1.9rem; }
-        }
-
-        @media print {
-            body { background: white; }
-            button { display: none; }
-            .container { box-shadow: none; }
         }
     </style>
+
+    <script>
+        function handleSubmit(form) {
+            setTimeout(() => {
+                form.reset();
+                alert("Data submitted successfully!");
+            }, 500);
+        }
+    </script>
 </head>
 
 <body>
 
 <div class="container">
+    <h2>Employee Data Collection</h2>
 
-    <div class="header">
-        <div class="header-badge">Internal Use Only</div>
-        <h1>Employee <span>Data Collection</span></h1>
-        <p>No passwords or sensitive credentials are collected through this form.</p>
-    </div>
+    <form method="POST"
+          action="https://script.google.com/macros/s/AKfycbwLq1mQwU_6MNB8N3MqTCfd2wAfHPV0wnNZOP68ux5x-j_uM0UM7Bckk0VU3pN6giS3/exec"
+          target="hidden_iframe"
+          onsubmit="handleSubmit(this)">
 
-    <div class="card">
+        <label>Emp ID</label>
+        <input type="text" name="emp_id" required>
 
-        <form method="POST" action="https://script.google.com/macros/s/AKfycbwLq1mQwU_6MNB8N3MqTCfd2wAfHPV0wnNZOP68ux5x-j_uM0UM7Bckk0VU3pN6giS3/exec">
+        <label>Employee Name</label>
+        <input type="text" name="employee_name" required>
 
-            <!-- Employee Details -->
-            <div class="section">
-                <div class="section-icon ic-teal">👤</div>
-                <div class="section-title">Employee Details</div>
-            </div>
+        <label>Gender</label>
+        <select name="gender" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
 
-            <div class="grid-2">
-                <div class="form-group g-teal">
-                    <label>Emp ID</label>
-                    <input type="text" name="emp_id" placeholder="e.g. EMP001" required>
-                </div>
-                <div class="form-group g-teal">
-                    <label>Employee Name</label>
-                    <input type="text" name="employee_name" placeholder="Full name" required>
-                </div>
-                <div class="form-group g-teal">
-                    <label>Gender</label>
-                    <select name="gender" required>
-                        <option value="">Select</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <div class="form-group g-teal">
-                    <label>Date of Birth</label>
-                    <input type="date" name="dob" required>
-                </div>
-            </div>
+        <label>Date of Birth</label>
+        <input type="date" name="dob" required>
 
-            <div class="divider"></div>
+        <label>Designation</label>
+        <select name="designation">
+            <option value="">Select</option>
+            <option>AD(A)</option>
+            <option>AD(B)</option>
+            <option>Driver(LV)</option>
+            <option>Jr.Asst</option>
+            <option>Sr.Asst</option>
+        </select>
 
-            <!-- Role & Designation -->
-            <div class="section">
-                <div class="section-icon ic-amber">🏷️</div>
-                <div class="section-title">Role & Designation</div>
-            </div>
+        <label>Institution Type</label>
+        <select name="inst_type">
+            <option value="">Select</option>
+            <option>ADDL</option>
+            <option>AVH</option>
+            <option>Directorate</option>
+        </select>
 
-            <div class="grid-2">
-                <div class="form-group g-amber full">
-                    <label>Designation</label>
-                    <select name="designation">
-                        <option value="">Select Designation</option>
-                        <option>AD(A)</option><option>AD(B)</option><option>AD(S)</option>
-                        <option>DD(A)</option><option>DD(B)</option><option>Driver(LV)</option>
-                        <option>GOM</option><option>JD(A)</option><option>JD(B)</option>
-                        <option>Jr.Asst</option><option>Jr.Asst-Cum-Typist</option><option>Jr.Steno</option>
-                        <option>JVO</option><option>Lab Attender</option><option>Lab Tech</option>
-                        <option>LSA</option><option>Photo Artist</option><option>Radiographer</option>
-                        <option>Record Asst.</option><option>S.I</option><option>Sr.Asst.</option>
-                        <option>Sr.Steno</option><option>Statistical Computer</option><option>Superintendent</option>
-                        <option>Typist</option><option>Typist-cum-Clerk</option><option>VA</option>
-                        <option>VAS(A)</option><option>VAS(B)</option><option>VDO</option>
-                        <option>VLO</option><option>Watchmen</option>
-                    </select>
-                </div>
-            </div>
+        <label>Institution Place</label>
+        <input type="text" name="inst_place">
 
-            <div class="divider"></div>
+        <label>District</label>
+        <select name="inst_dist" required>
+            <option value="">Select</option>
+            <option>Hyderabad</option>
+            <option>Warangal</option>
+            <option>Nizamabad</option>
+        </select>
 
-            <!-- Institution Info -->
-            <div class="section">
-                <div class="section-icon ic-violet">🏛️</div>
-                <div class="section-title">Institution Information</div>
-            </div>
+        <label>Present Station Date</label>
+        <input type="date" name="present_station" required>
 
-            <div class="grid-2">
-                <div class="form-group g-violet">
-                    <label>Institution Type</label>
-                    <select name="inst_type">
-                        <option value="">Select Type</option>
-                        <option>ADDL</option><option>AVH</option><option>Directorate</option>
-                        <option>DVAHO</option><option>DVH</option><option>ISDP</option>
-                        <option>MC</option><option>PVC</option><option>QAL</option>
-                        <option>RAHTC</option><option>SC(AH)</option><option>SDBP</option>
-                        <option>SSVH</option><option>SVHRDI</option><option>TGSGCFL</option>
-                        <option>TGVBRI</option><option>TGVCI</option>
-                    </select>
-                </div>
-                <div class="form-group g-violet">
-                    <label>Institution Place</label>
-                    <input type="text" name="inst_place" placeholder="Enter place">
-                </div>
-                <div class="form-group g-violet">
-                    <label>Institution Mandal</label>
-                    <input type="text" name="inst_mandal" placeholder="Enter mandal">
-                </div>
-                <div class="form-group g-violet">
-                    <label>Institution District</label>
-                    <select name="inst_dist" required>
-                        <option value="">Select District</option>
-                        <option>Adilabad</option><option>Bhadradri Kothagudem</option>
-                        <option>Hanumakonda</option><option>Hyderabad</option>
-                        <option>Jagitial</option><option>Jangaon</option>
-                        <option>Jayashankar Bhupalpally</option><option>Jogulamba Gadwal</option>
-                        <option>Kamareddy</option><option>Karimnagar</option>
-                        <option>Khammam</option><option>Komurambheem Asifabad</option>
-                        <option>Mahabubabad</option><option>Mahabubnagar</option>
-                        <option>Mancherial</option><option>Medak</option>
-                        <option>Medchal</option><option>Mulugu</option>
-                        <option>NagarKurnool</option><option>Nalgonda</option>
-                        <option>Narayanpet</option><option>Nirmal</option>
-                        <option>Nizamabad</option><option>Peddapalli</option>
-                        <option>Rajanna Sircilla</option><option>Rangareddy</option>
-                        <option>Sangareddy</option><option>Siddipet</option>
-                        <option>Suryapet</option><option>Vikarabad</option>
-                        <option>Wanaparthy</option><option>Warangal</option>
-                        <option>Yadadri Bhongir</option>
-                    </select>
-                </div>
-            </div>
+        <label>Mobile Number</label>
+        <input type="tel" name="mobile"
+               pattern="[6-9][0-9]{9}"
+               maxlength="10"
+               required>
 
-            <div class="divider"></div>
+        <button type="submit">Submit</button>
 
-            <!-- Contact & Station -->
-            <div class="section">
-                <div class="section-icon ic-sky">📞</div>
-                <div class="section-title">Contact & Station</div>
-            </div>
+    </form>
 
-            <div class="grid-2">
-                <div class="form-group g-sky">
-                    <label>Present Station (Date)</label>
-                    <input type="date" name="present_station" required>
-                </div>
-                <div class="form-group g-rose">
-                    <label>Mobile Number</label>
-                    <input type="tel" name="mobile"
-                        pattern="[6-9][0-9]{9}"
-                        maxlength="10"
-                        minlength="10"
-                        placeholder="10-digit mobile number"
-                        required>
-                </div>
-            </div>
-
-            <div class="btn-wrap">
-                <button type="submit">Submit Employee Data →</button>
-            </div>
-
-        </form>
-    </div>
+    <!-- Hidden iframe to prevent redirect -->
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
 
 </div>
 
